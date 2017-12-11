@@ -72,7 +72,10 @@ public class DBControl {
 			criarTabela(Categoria.class);
 			popularCategorias();
 			
-		} catch (TableNeverTransitionedToStateException | InterruptedException e) {
+		} catch (TableNeverTransitionedToStateException e) {
+			e.printStackTrace();
+		} 
+		 catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
