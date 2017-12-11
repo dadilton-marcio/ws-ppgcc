@@ -17,6 +17,7 @@ public static void main(String[] args) {
 	
 	DBControl banco = new DBControl();
 
+	/*
 	Fornecedor fornecedor = new Fornecedor();
 	fornecedor.setDescricao("Bar do Nelson");
 	banco.getMapper().save(fornecedor);
@@ -37,7 +38,7 @@ public static void main(String[] args) {
 	conta.setValor(65.00);
 	banco.getMapper().save(conta);
 	System.out.println("Conta  cadastrada: " + conta);
-	
+	*/
 
 	System.out.println("FinControlWS rodando... ");
 	Endpoint.publish(url, webservice);
