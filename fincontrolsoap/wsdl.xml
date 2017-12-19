@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.webservice.fincontrol.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="api" targetNamespace="http://soap.webservice.fincontrol.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap.webservice.fincontrol.com/" elementFormDefault="unqualified" targetNamespace="http://soap.webservice.fincontrol.com/" version="1.0">
+
+  <xs:element name="CadastrarContaPagar" type="tns:CadastrarContaPagar"/>
+
+  <xs:element name="CadastrarContaPagarResponse" type="tns:CadastrarContaPagarResponse"/>
+
+  <xs:element name="CadastrarDadosIniciais" type="tns:CadastrarDadosIniciais"/>
+
+  <xs:element name="CadastrarDadosIniciaisResponse" type="tns:CadastrarDadosIniciaisResponse"/>
+
+  <xs:element name="Categorias" type="tns:Categorias"/>
+
+  <xs:element name="Contas" type="tns:Contas"/>
+
+  <xs:element name="Fornecedores" type="tns:Fornecedores"/>
+
+  <xs:element name="GerarListagemDeContas" type="tns:GerarListagemDeContas"/>
+
+  <xs:element name="Hello" type="tns:Hello"/>
+
+  <xs:element name="HelloResponse" type="tns:HelloResponse"/>
+
+  <xs:element name="ListarCategorias" type="tns:ListarCategorias"/>
+
+  <xs:element name="ListarFornecedores" type="tns:ListarFornecedores"/>
+
+  <xs:element name="contaPagar" type="tns:contaPagar"/>
+
+  <xs:element name="parametroRelatorio" type="tns:parametroRelatorio"/>
+
+  <xs:complexType name="CadastrarContaPagar">
+    <xs:sequence>
+      <xs:element name="ContaPagar" type="tns:contaPagar"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contaPagar">
+    <xs:complexContent>
+      <xs:extension base="tns:conta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codCategoria" type="xs:string"/>
+          <xs:element minOccurs="0" name="codContaPagar" type="xs:string"/>
+          <xs:element name="codFornecedor" type="xs:string"/>
+          <xs:element name="dataVencimento" type="xs:string"/>
+          <xs:element name="descricao" type="xs:string"/>
+          <xs:element name="situacao" type="tns:situacaoConta"/>
+          <xs:element name="valor" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="conta">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="CadastrarContaPagarResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContaPagar" type="tns:contaPagar"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GerarListagemDeContas">
+    <xs:sequence>
+      <xs:element name="parametros" type="tns:parametroRelatorio"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="parametroRelatorio">
+    <xs:sequence>
+      <xs:element name="dataFinal" type="xs:string"/>
+      <xs:element name="dataInicial" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Contas">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Conta" type="tns:contaPagar"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CadastrarDadosIniciais">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="CadastrarDadosIniciaisResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ListarCategorias">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="Categorias">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Categoria" type="tns:categoria"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="categoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codCategoria" type="xs:string"/>
+      <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ListarFornecedores">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="Fornecedores">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Fornecedor" type="tns:fornecedor"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fornecedor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codFornecedor" type="xs:string"/>
+      <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Hello">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="HelloResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="situacaoConta">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PENDENTE"/>
+      <xs:enumeration value="PAGA"/>
+      <xs:enumeration value="CANCELADA"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ListarFornecedoresResponse">
+    <wsdl:part element="tns:Fornecedores" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CadastrarContaPagar">
+    <wsdl:part element="tns:CadastrarContaPagar" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GerarListagemDeContasResponse">
+    <wsdl:part element="tns:Contas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CadastrarDadosIniciaisResponse">
+    <wsdl:part element="tns:CadastrarDadosIniciaisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GerarListagemDeContas">
+    <wsdl:part element="tns:GerarListagemDeContas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ListarCategoriasResponse">
+    <wsdl:part element="tns:Categorias" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CadastrarContaPagarResponse">
+    <wsdl:part element="tns:CadastrarContaPagarResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CadastrarDadosIniciais">
+    <wsdl:part element="tns:CadastrarDadosIniciais" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ListarCategorias">
+    <wsdl:part element="tns:ListarCategorias" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ListarFornecedores">
+    <wsdl:part element="tns:ListarFornecedores" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Hello">
+    <wsdl:part element="tns:Hello" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HelloResponse">
+    <wsdl:part element="tns:HelloResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IFinControlWS">
+    <wsdl:operation name="CadastrarContaPagar">
+      <wsdl:input message="tns:CadastrarContaPagar" name="CadastrarContaPagar">
+    </wsdl:input>
+      <wsdl:output message="tns:CadastrarContaPagarResponse" name="CadastrarContaPagarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarListagemDeContas">
+      <wsdl:input message="tns:GerarListagemDeContas" name="GerarListagemDeContas">
+    </wsdl:input>
+      <wsdl:output message="tns:GerarListagemDeContasResponse" name="GerarListagemDeContasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarDadosIniciais">
+      <wsdl:input message="tns:CadastrarDadosIniciais" name="CadastrarDadosIniciais">
+    </wsdl:input>
+      <wsdl:output message="tns:CadastrarDadosIniciaisResponse" name="CadastrarDadosIniciaisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCategorias">
+      <wsdl:input message="tns:ListarCategorias" name="ListarCategorias">
+    </wsdl:input>
+      <wsdl:output message="tns:ListarCategoriasResponse" name="ListarCategoriasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFornecedores">
+      <wsdl:input message="tns:ListarFornecedores" name="ListarFornecedores">
+    </wsdl:input>
+      <wsdl:output message="tns:ListarFornecedoresResponse" name="ListarFornecedoresResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Hello">
+      <wsdl:input message="tns:Hello" name="Hello">
+    </wsdl:input>
+      <wsdl:output message="tns:HelloResponse" name="HelloResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="apiSoapBinding" type="tns:IFinControlWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CadastrarContaPagar">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="CadastrarContaPagar">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CadastrarContaPagarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarListagemDeContas">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="GerarListagemDeContas">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GerarListagemDeContasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastrarDadosIniciais">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="CadastrarDadosIniciais">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CadastrarDadosIniciaisResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCategorias">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="ListarCategorias">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ListarCategoriasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFornecedores">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="ListarFornecedores">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ListarFornecedoresResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Hello">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="Hello">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="HelloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="api">
+    <wsdl:port binding="tns:apiSoapBinding" name="FinControlWSPort">
+      <soap:address location="http://localhost:8080/fincontrolsoap/api"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -11,6 +11,7 @@ import com.fincontrol.model.Fornecedor;
 import com.fincontrol.model.SituacaoConta;
 
 public class FinControlPublishWS {
+	
 public static void main(String[] args) {
 	IFinControlWS webservice = new FinControlWS();
 	String url = "http://localhost:8080/fincontrolws";

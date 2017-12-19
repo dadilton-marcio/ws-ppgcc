@@ -17,4 +17,46 @@
       <scope>compile</scope>
     </dependency>
   </dependencies>
+ <build> 
+  <plugins>
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>com.fincontrol.webservice.soap.FinControlPublishWS</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+<!--       <plugin>  -->      
+      <!-- Build an executable JAR -->
+<!--       <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.0.2</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath> -->
+           <!--  <classpathPrefix>lib/</classpathPrefix>  -->
+<!--             <mainClass>com.fincontrol.webservice.soap.FinControlPublishWS</mainClass>
+          </manifest>
+          <manifestEntries>
+                <Class-Path>lib/</Class-Path>
+          </manifestEntries>
+        </archive>
+      </configuration>
+    </plugin>  -->
+  </plugins>
+  </build>  
 </project>

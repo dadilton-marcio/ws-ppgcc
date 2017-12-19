@@ -16,13 +16,12 @@ public class FinControlWS implements IFinControlWS {
 		return "Olah Mundo";
 	}
 
-	@Override
+
 	public ContaPagar setContaPagar(ContaPagar conta) {
 		// TODO Auto-generated method stub
 		return controle.cadastraContaPagar(conta);
 	}
 
-	@Override
 	public List<ContaPagar> getListagemContas(ParametroRelatorio parametros) {
 		// TODO Auto-generated method stub
 		return controle.getListagemContas(parametros);

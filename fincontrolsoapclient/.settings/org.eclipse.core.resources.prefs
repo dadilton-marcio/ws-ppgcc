@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/com/fincontrol/webservice/soap/Api.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/ApiLocator.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/ApiSoapBindingStub.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/Categoria.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/Conta.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/ContaPagar.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/Fornecedor.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/IFinControlWS.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/ParametroRelatorio.java=UTF-8
+encoding//src/com/fincontrol/webservice/soap/SituacaoConta.java=UTF-8
